@@ -1,0 +1,15 @@
+[Unit]
+Description=Check Internet and Cycle HS100 Power
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/srv/modem-rebooter/script.sh
+Restart=on-failure
+RestartSec=5min
+Environment=MODEM_PLUG_IP=192.168.1.100
+
+[Install]
+WantedBy=multi-user.target
+
